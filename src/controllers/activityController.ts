@@ -1,11 +1,18 @@
 import {Request,Response} from 'express';
-import { IActivity } from "../models/activity";
+import { obtenerEntradas } from '../services/activityService';
+import { IActivity } from '../models/activity';
 
-let activities:IActivity[]=[]; 
-
-export const getActivities = (req:Request,res:Response)=>{
-    res.status(200).json(activities);
+export const getActivities = async (req: Request, res: Response) => {
+        try {
+            const activities = await obtenerEntradas.getAllActivities();
+            console.log("Actividades obtenidas:", activities); 
+            
+            res.status(200).json(activities);
+        } catch (error) {
+            res.status(500).json({ message: "Error al obtener las actividades", error });
+        }
 };
+
 /*
 export const getActivityById =(req:Request,res:Response)=>{
     const id=parseInt(req.params.id);
@@ -17,14 +24,18 @@ export const getActivityById =(req:Request,res:Response)=>{
     res.json(activity);
 };*/
 
-export const createActivity = (req: Request, res: Response) => {
-    const newActivity: IActivity = {
-      userId: req.body.userId,
-      type: req.body.type,
-      distance: req.body.distance,
-      duration: req.body.duration,
-      date: req.body.date,
-    };
-    activities.push(newActivity);
-    res.status(201).json(newActivity);
+export const createActivity = async (req: Request, res: Response) => {
+    try {
+        const newActivity: IActivity = {
+            type: req.body.type,
+            distance: req.body.distance,
+            duration: req.body.duration,
+            date: req.body.date,
+        };
+
+        await obtenerEntradas.createActivity(newActivity);
+        res.status(201).json({ message: "Creado con éxito" });
+    } catch (error) {
+        res.status(500).json({ message: "Error al crear la actividad", error });
+    }
 };  
