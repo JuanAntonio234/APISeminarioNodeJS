@@ -53,13 +53,6 @@ npm i ts-node -D
 npm i @types/node -D
 ```
 
-### Otras dependencias
-
-```bash
-npm i glob
-npm i lru-cache
-```
-
 ## Scripts disponibles
 
 - **Modo desarrollo con Nodemon:**
