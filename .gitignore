@@ -1,0 +1,36 @@
+# Dependencias de Node
+/node_modules/
+
+# Archivos generados por TypeScript
+/dist/
+/build/
+/out/
+
+# Archivos de configuración de IDE
+.vscode/
+
+# Archivos de entorno
+.env
+
+# Archivos de log
+*.log
+
+# Archivos temporales de npm/yarn
+npm-debug.log*
+
+# Archivos generados por TypeScript (información de compilación)
+*.tsbuildinfo
+
+# Archivos de nodemon
+*.pid
+*.log
+
+# Configuración de VSCode
+.vscode/
+
+# Archivos de base de datos locales de MongoDB
+/data/db/
+
+# Archivos de backups de MongoDB (dumps)
+*.bson
+*.json
